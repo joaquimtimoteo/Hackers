@@ -77,6 +77,16 @@ pip install scapy paramiko impacket
 
 ---
 
+### 📚 LIVROS DO CURSO
+
+[Desafio_Linux_Hacker_por_MFAA.pdf](https://github.com/user-attachments/files/19[Guia_do_Hacker_Brasileiro_por_MFAA.pdf]
+(https://github.com/user-attachments/files/19407971/Guia_do_Hacker_Brasileiro_por_MFAA.pdf)
+407970/Desafio_Linux_Hacker_por_MFAA.pdf)
+[Profissional+Hacker+Ético.pdf]
+(https://github.com/user-attachments/files/19407973/Profissional%2BHacker%2BEtico.pdf)
+
+
+
 ## ⚙️ 4. Configuração do Ambiente de Teste
 
 ### a. Sistema Atacante (Kali Linux)

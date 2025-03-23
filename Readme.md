@@ -1,201 +1,160 @@
-# README - Simulação de Verme (Worm) para Estudo e Pesquisa
+# 🔥 Python para Hackers: A Arte da Invasão
 
-## Índice
-1. Introdução
-2. Propósito
-3. Requisitos
-4. Configuração do Ambiente de Teste
-5. Como Executar o Script
-6. Funcionalidades Principais
-7. Resultados Esperados
-8. Limitações
-9. Considerações Finais
+Este repositório contém uma coleção de scripts e projetos desenvolvidos para fins educacionais e de pesquisa em segurança cibernética. Cada projeto demonstra técnicas e métodos usados em ambientes controlados (laboratórios ou redes isoladas), sempre com o objetivo de ensinar os fundamentos do hacking ético e da defesa cibernética.
+
+> ⚠️ **Atenção:** Todos os scripts devem ser executados apenas em ambientes autorizados e isolados. O uso indevido deste material pode violar leis e causar danos irreparáveis.
 
 ---
 
-## 1. Introdução
+## 📑 Índice
 
-Este script é uma simulação simplificada de um verme (worm), criado exclusivamente para fins educacionais e de pesquisa em segurança cibernética. Ele demonstra como um malware pode se propagar automaticamente entre sistemas em uma rede local, explorando vulnerabilidades conhecidas, como credenciais fracas ou serviços mal configurados.
-
-O script foi desenvolvido para funcionar em ambientes controlados, como laboratórios ou redes isoladas, onde você tenha autorização explícita para realizar testes.
-
----
-
-## 2. Propósito
-
-O objetivo deste projeto é:
-- Demonstrar como worms se propagam em redes locais.
-- Explorar diferentes métodos de movimentação lateral, como SSH, SMB (PsExec), RDP e NFS.
-- Entender as vulnerabilidades associadas a configurações inadequadas de segurança.
-- Aprender como proteger redes contra ataques semelhantes.
+1. [Introdução](#introdução)
+2. [Propósito](#propósito)
+3. [Requisitos e Dependências](#requisitos-e-dependências)
+4. [Configuração do Ambiente de Teste](#configuração-do-ambiente-de-teste)
+5. [Lista de Scripts e Projetos](#lista-de-scripts-e-projetos)
+6. [Como Executar os Scripts](#como-executar-os-scripts)
+7. [Exemplos de Saída](#exemplos-de-saída)
+8. [Limitações](#limitações)
+9. [Contribuição](#contribuição)
+10. [Disclaimer](#disclaimer)
 
 ---
 
-## 3. Requisitos
+## 📌 1. Introdução
 
-### Dependências
-Para executar o script, você precisará das seguintes bibliotecas Python:
-- `scapy`: Para varredura de rede via ARP.
-- `paramiko`: Para conexões SSH.
-- `impacket`: Para execução remota via SMB (PsExec) e outras funcionalidades relacionadas ao Windows.
+Este repositório reúne diversos scripts que simulam comportamentos típicos de malware e técnicas de exploração, tais como:
+- Propagação de worms 🐛
+- Enumeração de DNS e subdomínios 🌐
+- Coleta de informações sensíveis (info stealer) 🔍
+- Keylogging ⌨️
+- Escaneamento de redes e proteção de documentos PDF 📄
+- Criação de botnets via SSH 🤖
 
-Instale as dependências usando:
+Cada script foi criado com o intuito de ensinar conceitos fundamentais e avançados de hacking ético, sempre ressaltando a importância da ética e do uso responsável das técnicas.
+
+---
+
+## 🎯 2. Propósito
+
+O objetivo deste repositório é:
+- Demonstrar a propagação de worms e a movimentação lateral em redes locais.
+- Explorar métodos de exploração e enumeração, como DNS, subdomínios e escaneamento de rede.
+- Ensinar técnicas de coleta de informações e monitoramento, por meio de keyloggers e info stealers.
+- Desenvolver habilidades na criação de ferramentas para testes de segurança e pentesting.
+- Discutir métodos de proteção e estratégias de defesa contra ataques cibernéticos.
+
+---
+
+## 🛠️ 3. Requisitos e Dependências
+
+### 📚 Dependências Gerais
+
+Para executar os scripts, certifique-se de ter o **Python 3** instalado. Algumas bibliotecas comuns utilizadas neste repositório são:
+
+- **scapy:** Varredura de rede via ARP.  
+- **paramiko:** Conexões SSH.  
+- **impacket:** Execução remota via SMB (PsExec) e outras funcionalidades para ambientes Windows.
+
+Instale as dependências gerais com:
 ```bash
 pip install scapy paramiko impacket
 ```
 
-### Ambiente de Teste
-- **Sistema Atacante**: Kali Linux com privilégios de root.
-- **Sistemas Alvo**:
-  - Um sistema Linux com SSH habilitado (opcional).
-  - Um sistema Windows com SMB (porta 445) e RDP (porta 3389) habilitados.
-- **Rede Isolada**: Use máquinas virtuais ou contêineres Docker para criar uma rede isolada.
+### 💻 Ambiente de Teste
+
+- **Sistema Atacante:**  
+  Geralmente um ambiente Linux (ex.: Kali Linux) com privilégios de root.
+- **Sistemas Alvo:**  
+  - Linux com SSH habilitado (opcional).  
+  - Windows com SMB (porta 445) e RDP (porta 3389) habilitados.
+- **Rede Isolada:**  
+  Recomenda-se utilizar máquinas virtuais ou contêineres Docker para criar um ambiente de testes seguro.
 
 ---
 
-## 4. Configuração do Ambiente de Teste
+## ⚙️ 4. Configuração do Ambiente de Teste
 
-### a. Configurar o Sistema Atacante (Kali Linux)
-1. Instale as dependências necessárias:
+### a. Sistema Atacante (Kali Linux)
+1. Atualize o sistema e instale as dependências:
    ```bash
    sudo apt update
    sudo apt install python3 python3-pip
    pip install scapy paramiko impacket
    ```
-2. Execute o script com privilégios de root:
+2. Execute os scripts com privilégios de root:
    ```bash
-   sudo python3 worm.py
+   sudo python3 <nome_do_script>.py
    ```
 
-### b. Configurar o Sistema Alvo (Windows)
-1. **Habilitar SMB**:
-   - Certifique-se de que o serviço SMB está habilitado.
-   - Configure o firewall para permitir conexões na porta `445`:
-     ```powershell
-     New-NetFirewallRule -DisplayName "Allow SMB" -Direction Inbound -LocalPort 445 -Protocol TCP -Action Allow
-     ```
+### b. Sistemas Alvo (Windows e Linux)
+- **Windows:**  
+  - Habilite SMB e RDP.  
+  - Configure o firewall para permitir as portas necessárias.  
+  - Crie um usuário com credenciais simples para testes.
+- **Linux (Opcional):**  
+  - Habilite SSH e, se necessário, configure NFS para compartilhamento.
 
-2. **Habilitar RDP**:
-   - Vá para **Painel de Controle > Sistema > Configurações de Sistema Remoto**.
-   - Permita conexões remotas via RDP.
+Consulte a documentação interna de cada projeto para instruções específicas.
 
-3. **Criar Usuário com Credenciais Fracas**:
-   - Crie um usuário com senha fraca para facilitar a exploração:
-     ```powershell
-     net user testuser TestPassword123 /add
-     net localgroup administrators testuser /add
-     ```
+---
 
-4. **Desativar Proteções Extras (Opcional)**:
-   - Desative o UAC (User Account Control) para facilitar a execução remota de comandos.
+## 📂 5. Lista de Scripts e Projetos
 
-### c. Configurar o Sistema Alvo (Linux - Opcional)
-1. **Habilitar SSH**:
+Este repositório inclui os seguintes scripts:
+
+- **worm.py / worm1.py:**  
+  Simulação de verme (worm) que demonstra a propagação em redes locais via ARP, SSH, SMB, RDP e NFS.
+  
+- **client.py / client(level2).py:**  
+  Scripts de cliente para testes de comunicação e propagação.
+
+- **server.py / server(level2).py:**  
+  Scripts de servidor que aguardam conexões e coordenam ataques simulados.
+
+- **dns_enum.py:**  
+  Script para enumeração de registros DNS, mapeando a infraestrutura de redes alvo.
+
+- **subdomain_enum.py:**  
+  Ferramenta para identificação de subdomínios, auxiliando na descoberta de alvos potenciais.
+
+- **info_stealer.py:**  
+  Simulação de um info stealer para coleta de informações sensíveis do sistema alvo.
+
+- **keylogger.py:**  
+  Implementação de um keylogger para registrar entradas de teclado de forma controlada.
+
+- **network_scaner.py:**  
+  Script para escanear a rede local e identificar hosts ativos e serviços em execução.
+
+- **pdf_scaner.py:**  
+  Ferramenta para análise e verificação de vulnerabilidades em documentos PDF.
+
+- **protection.py:**  
+  Script com técnicas de proteção e detecção de atividades maliciosas.
+
+- **ssh_btonet.py:**  
+  Simulação de uma botnet utilizando conexões SSH para propagação e comando.
+
+Além dos scripts, o repositório contém apresentações em formato PPTX (ex.: `DNS_Records_enum+(1).pptx`, `Internet+Worm.pptx`, `PDF+Protection.pptx`, `Subdomain+Enumeration.pptx`, `ssh+botnet.pptx`) que explicam a teoria e a prática por trás de cada técnica.
+
+---
+
+## ▶️ 6. Como Executar os Scripts
+
+1. Escolha o script que deseja testar.  
+2. Configure o ambiente de teste conforme descrito na seção anterior.  
+3. Execute o script utilizando o comando:
    ```bash
-   sudo systemctl start ssh
-   sudo systemctl enable ssh
-   sudo ufw allow 22/tcp
-   sudo ufw reload
+   sudo python3 <nome_do_script>.py
    ```
-
-2. **Configurar NFS (Opcional)**:
-   ```bash
-   sudo apt install nfs-kernel-server
-   sudo mkdir -p /export
-   sudo chmod 777 /export
-   echo "/export *(rw,sync,no_subtree_check)" | sudo tee -a /etc/exports
-   sudo exportfs -ra
-   sudo systemctl restart nfs-kernel-server
-   ```
+4. Acompanhe os logs e a saída no terminal para verificar o funcionamento do script.
 
 ---
 
-## 5. Como Executar o Script
+## 💬 7. Exemplos de Saída
 
-1. Salve o código fornecido em um arquivo chamado `worm.py`.
-2. Abra um terminal no Kali Linux e execute:
-   ```bash
-   sudo python3 worm.py
-   ```
-3. Observe os logs gerados pelo script para acompanhar o progresso da propagação.
-
----
-
-## 6. Funcionalidades Principais
-
-### a. Payload
-- Cria um arquivo `infected.txt` no sistema infectado para indicar que o verme foi executado com sucesso.
-
-### b. Varredura de Rede (ARP Scan)
-- Detecta hosts ativos na rede local (`192.168.x.x`) usando o protocolo ARP.
-
-### c. Propagação via SSH (Linux)
-- Tenta conectar-se aos sistemas alvo via SSH usando credenciais padrão (`kali/12345`).
-
-### d. Propagação via SMB (Windows - PsExec)
-- Usa o módulo `psexec` do `impacket` para executar comandos remotamente via SMB (porta `445`).
-
-### e. Propagação via RDP (Windows)
-- Tenta executar comandos remotamente via RDP (porta `3389`).
-
-### f. Propagação via NFS (Linux - Opcional)
-- Monta compartilhamentos NFS nos sistemas alvo e copia o script do verme para eles.
-
----
-
-## 7. Resultados Esperados
-
-Com o ambiente configurado corretamente, você deve observar os seguintes resultados:
-
-1. **Criação do Arquivo `infected.txt`**:
-   - No sistema atacante: O payload cria o arquivo `infected.txt` localmente.
-   - Nos sistemas alvo: O arquivo `infected.txt` será criado nos sistemas comprometidos.
-
-2. **Logs Gerados**:
-   - Mensagens detalhadas sobre o progresso do script, incluindo tentativas de conexão e resultados de cada exploração.
-
-3. **Propagação**:
-   - O script deve ser capaz de se propagar entre os sistemas alvo, dependendo das configurações e credenciais fornecidas.
-
----
-
-## 8. Limitações
-
-1. **Compatibilidade**:
-   - O script foi projetado para funcionar em ambientes Linux e Windows, mas algumas funcionalidades (como NFS) são específicas do Linux.
-
-2. **Dependência de Credenciais**:
-   - A eficácia do script depende de credenciais válidas para os sistemas alvo.
-
-3. **Versão do Impacket**:
-   - Versões mais recentes do `impacket` não incluem o módulo `wmiexec`. Substitua-o pelo módulo `psexec`.
-
-4. **Ambiente Controlado**:
-   - O script deve ser usado apenas em ambientes autorizados e isolados para evitar danos colaterais.
-
----
-
-## 9. Considerações Finais
-
-### a. Ética e Legalidade
-- Este script deve ser usado **exclusivamente** em ambientes controlados e autorizados.
-- Qualquer uso fora dessas condições pode violar leis e regulamentos locais.
-
-### b. Segurança
-- Certifique-se de que o ambiente de teste seja completamente isolado da internet e de redes reais.
-- Limpe todos os arquivos e registros após os testes para evitar resíduos maliciosos.
-
-### c. Sugestões de Melhoria
-- Adicionar mais verificações de segurança antes de executar operações críticas.
-- Implementar técnicas de evasão para simular cenários avançados de ataque.
-- Expandir o escopo para incluir outras vulnerabilidades, como EternalBlue ou SMB Relay.
-
----
-
-## 10. Exemplo de Saída
-
-Ao executar o script, você pode ver uma saída semelhante à seguinte:
-
+Ao executar, por exemplo, o script `worm.py`, você poderá observar uma saída similar a esta:
 ```
 Payload executed: infected.txt created.
 Targets found: ['192.168.135.139']
@@ -204,25 +163,47 @@ PsExec lateral movement succeeded on 192.168.135.139
 Attempting RDP exploit on 192.168.135.139
 RDP exploit executed on 192.168.135.139
 ```
-
-No sistema alvo (`192.168.135.139`), o arquivo `infected.txt` será criado no diretório raiz (`C:\`).
-
----
-
-## 11. Contribuição
-
-Se você deseja contribuir para este projeto, sinta-se à vontade para sugerir melhorias ou adicionar novas funcionalidades. Lembre-se de sempre priorizar a ética e a segurança durante o desenvolvimento.
+Nesse caso, o arquivo `infected.txt` é criado nos sistemas comprometidos, indicando a propagação do worm.
 
 ---
 
-## 12. Disclaimer
+## 🚧 8. Limitações
 
-Este script é fornecido **sem garantias**. O uso indevido pode causar danos irreparáveis a sistemas não autorizados. O autor não se responsabiliza por qualquer dano resultante do uso inadequado deste código.
+- **Compatibilidade:**  
+  Alguns scripts foram desenvolvidos para funcionar em ambientes Linux ou Windows, e nem todas as funcionalidades são multiplataforma.
 
-Certifique-se de seguir rigorosamente as melhores práticas éticas e legais durante os testes.
+- **Dependência de Credenciais:**  
+  Muitos scripts dependem de credenciais padrão ou configuradas previamente para funcionar corretamente.
+
+- **Versões de Bibliotecas:**  
+  Versões recentes de bibliotecas como o `impacket` podem ter alterações. Verifique a documentação de cada script para eventuais adaptações.
+
+- **Ambiente Controlado:**  
+  Estes scripts devem ser testados somente em ambientes isolados e autorizados.
 
 ---
 
-### Autor: Joaquim Timóteo  
-### Data: 03/03/2025  
-### Versão: 1.0  
+## 🤝 9. Contribuição
+
+Contribuições são bem-vindas! Se você deseja aprimorar algum script ou adicionar novas funcionalidades:
+- Faça um fork do repositório.
+- Submeta suas alterações via pull request.
+- Mantenha o foco na ética e na segurança.
+
+---
+
+## ⚠️ 10. Disclaimer
+
+Este repositório e todos os scripts nele contidos são fornecidos **sem garantias**.  
+**Uso Responsável:**  
+- Utilize o material somente em ambientes autorizados e para fins educacionais.  
+- O autor não se responsabiliza por qualquer dano decorrente do uso inadequado deste código.
+
+---
+
+### 👤 Autor
+
+**Joaquim Timóteo**  
+**Data:** 03/03/2025  
+**Versão:** 1.0
+

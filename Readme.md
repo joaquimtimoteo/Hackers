@@ -4,6 +4,10 @@ Este repositório contém uma coleção de scripts e projetos desenvolvidos para
 
 > ⚠️ **Atenção:** Todos os scripts devem ser executados apenas em ambientes autorizados e isolados. O uso indevido deste material pode violar leis e causar danos irreparáveis.
 
+
+![main](https://github.com/user-attachments/assets/94700200-3400-42a4-b76f-80797f60d601)
+
+
 ---
 
 ## 📑 Índice
